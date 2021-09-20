@@ -1,0 +1,11 @@
+/* -------------------------------------------------------------------
+ * ## fonts
+ * ------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=DM+Sans|Cormorant+Garamond|Share+Tech+Mono&display=swap');
+
+@font-face {
+  font-family: 'Criteria';
+  src: font('criteria_cf.woff2') format('woff2'), font('criteria_cf.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

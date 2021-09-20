@@ -1,0 +1,322 @@
+/* -------------------------------------------------------------------
+ * ## base
+ * ------------------------------------------------------------------- */
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  outline: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+  letter-spacing: 0;
+  margin-top: 0;
+}
+
+body {
+  font-family: $sans_font;
+  font-size: $def_font_size;
+  color: $font;
+  background-color: $bg;
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  padding: 20px;
+  margin: 0;
+}
+
+section,
+article,
+.section,
+.article,
+.paper {
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+/* -------------------------------------------------------------------
+ * ## text selection
+ * ------------------------------------------------------------------- */
+::-moz-selection {
+  color: $bg;
+  background: $font;
+  text-shadow: none;
+}
+
+::selection {
+  color: $bg;
+  background: $font;
+  text-shadow: none;
+}
+
+/* -------------------------------------------------------------------
+ * ## media
+ * ------------------------------------------------------------------- */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+canvas {
+  display: block;
+}
+
+/* -------------------------------------------------------------------
+ * ## svg container
+ * ------------------------------------------------------------------- */
+object {
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------
+ * ## indentation reset
+ * ------------------------------------------------------------------- */
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------------------------------------------------
+ * ## headings
+ * ------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  -webkit-font-smoothing: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-variant-ligatures: common-ligatures;
+  -moz-font-variant-ligatures: common-ligatures;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1.8rem;
+  font-family: $h_font;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 1.25;
+  letter-spacing: -0.1rem;
+}
+
+h2 {
+  font-size: 2.2em;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.8em;
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: 1.4em;
+  line-height: 1.286;
+}
+
+h5 {
+  font-size: 1.2em;
+  line-height: 1.235;
+}
+
+h6 {
+  font-size: 1em;
+  line-height: 1.286;
+  text-transform: uppercase;
+  letter-spacing: 0.16rem;
+}
+
+/* -------------------------------------------------------------------
+ * ## text formating
+ * ------------------------------------------------------------------- */
+em,
+i {
+  font-style: italic;
+  line-height: inherit;
+}
+
+strong,
+b {
+  font-weight: bold;
+  line-height: inherit;
+}
+
+small {
+  font-size: 60%;
+  line-height: inherit;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+/* -------------------------------------------------------------------
+ * ## lists
+ * ------------------------------------------------------------------- */
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: circle;
+}
+
+ol,
+ul {
+  margin-left: 1em;
+  margin-bottom: 16px;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 0.6em 0 0.6em 1.7em;
+}
+
+/* -------------------------------------------------------------------
+ * ## links
+ * ------------------------------------------------------------------- */
+a img {
+  border: none;
+}
+
+a:link,
+a:visited,
+a {
+  color: $font;
+  font-family: $sans_font;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: 0.07s ease-in-out;
+
+  &:hover {
+    color: $hover;
+  }
+
+  &:active {
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    color: $font;
+  }
+}
+
+a * {
+  cursor: pointer !important;
+}
+
+.selectable,
+.selectable * {
+  cursor: auto;
+  user-select: text;
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.elegant,
+.elegant * {
+  font-family: $serif_font;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* -------------------------------------------------------------------
+ * ## lines
+ * ------------------------------------------------------------------- */
+hr {
+  width: 80%;
+  border: 1px solid $hr;
+  background-color: $hr;
+  border-radius: 4px;
+  margin: 0 auto 24px;
+}
+
+/* -------------------------------------------------------------------
+ * ## lines
+ * ------------------------------------------------------------------- */
+code {
+  color: #000;
+  font-weight: bold;
+  font-family: $code;
+}
+
+/* -------------------------------------------------------------------
+ * ## scrollbar styles
+ * ------------------------------------------------------------------- */
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $font;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $font;
+}

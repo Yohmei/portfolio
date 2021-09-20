@@ -1,0 +1,26 @@
+@mixin mid($side: unset, $containerDesiredMeasure: unset, $targetDesiredMeasure: unset) {
+  #{$side}: calc(#{$containerDesiredMeasure} / 2 - #{$targetDesiredMeasure} / 2);
+}
+
+/* -------------------------------------------------------------------
+ * ## form placeholders
+ * ------------------------------------------------------------------- */
+@mixin placeholders() {
+  &::-webkit-input-placeholder {
+    color: $font !important;
+  }
+
+  &:-moz-placeholder {
+    /* Firefox 18- */
+    color: $font !important;
+  }
+
+  &::-moz-placeholder {
+    /* Firefox 19+ */
+    color: $font !important;
+  }
+
+  &:-ms-input-placeholder {
+    color: $font !important;
+  }
+}

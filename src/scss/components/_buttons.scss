@@ -1,0 +1,138 @@
+/* -------------------------------------------------------------------
+ * ## buttons
+ * ------------------------------------------------------------------- */
+button,
+input[type='submit'],
+input[type='reset'] {
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: $sans_font;
+  color: $bg;
+  text-align: center;
+  cursor: pointer;
+  font-size: $def_font_size;
+  height: 2em;
+  padding: 0 20px;
+  border: 2px solid transparent;
+  background: $font;
+  white-space: normal;
+  text-transform: capitalize;
+  text-shadow: none;
+  max-width: max-content;
+  margin: 3px 0;
+}
+
+button:hover,
+input[type='submit']:hover,
+input[type='reset']:hover {
+  background-color: $hover;
+}
+
+button:active,
+button.active,
+input[type='submit']:active,
+input[type='submit'].active,
+input[type='reset']:active,
+input[type='reset'].active {
+  box-shadow: none;
+  color: $font;
+  text-shadow: none;
+  background: $bg;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.onoffswitch {
+  font-weight: bold;
+  overflow: hidden;
+  height: 35px;
+  padding: 0;
+  margin-top: 7px;
+  display: inline-block;
+}
+
+.onoffswitch:hover {
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.25));
+}
+
+.onoffswitch * {
+  cursor: pointer;
+}
+
+.onoffswitch > span {
+  height: 35px;
+  text-align: left;
+  position: relative;
+  padding: 0;
+  width: 80px;
+  display: inline-block;
+  overflow: hidden;
+  background: $deactive;
+  border: 3px solid #811035;
+  border-radius: 23px;
+  transition: border-color 0.2s;
+}
+
+.onoffswitch > span::after {
+  content: ' ';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(0);
+  transition: transform 0.2s;
+  height: 24.5px;
+  width: 25px;
+  border-radius: 17px;
+  margin: 3px;
+  background: #fff;
+}
+
+.onoffswitch input {
+  display: none;
+}
+
+.onoffswitch span span {
+  width: 200%;
+  transform: translateX(-50%);
+  transition: transform 0.2s;
+  display: block;
+}
+
+.onoffswitch span span::before,
+.onoffswitch span span::after {
+  color: #fff;
+  float: left;
+  width: 50%;
+  height: 30px;
+  font-size: $def_font_size;
+  line-height: 30px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.onoffswitch span span::before {
+  content: attr(data-on);
+  padding-left: 13px;
+  background: $active;
+}
+
+.onoffswitch span span::after {
+  content: attr(data-off);
+  padding-right: 15px;
+  background: $deactive;
+  text-align: right;
+}
+
+.onoffswitch input:checked + span span {
+  transform: translateX(0);
+}
+
+.onoffswitch input:checked + span::after {
+  transform: translateX(42px);
+}
+
+.onoffswitch input:checked + span {
+  background: $active;
+  border-color: darken($color: $active, $amount: 10%);
+}
