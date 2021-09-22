@@ -11,8 +11,8 @@ function App() {
     <div className='App'>
       <Router history={history}>
         <Switch>
-          {routes.map((route) => (
-            <Route path={route.path} component={route.component} exact={route.exact}></Route>
+          {routes.map((route, i) => (
+            <Route key={i} path={route.path} component={route.component} exact={route.exact}></Route>
           ))}
         </Switch>
       </Router>
