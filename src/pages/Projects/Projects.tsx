@@ -2,7 +2,7 @@ import React from 'react'
 import TestProvider from '../../contextapi/TestProvider'
 import Body from './components/Body'
 
-const Works = () => {
+const Projects = () => {
   return (
     <TestProvider>
       <Body></Body>
@@ -10,4 +10,4 @@ const Works = () => {
   )
 }
 
-export default Works
+export default Projects

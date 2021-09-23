@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Home = () => {
+const Body = () => {
   return (
-    <main className='home'>
+    <main className='works'>
       <div className='content'>
-        <h1>Home</h1>
+        <h1>Works</h1>
       </div>
     </main>
   )
 }
 
-export default Home
+export default Body
