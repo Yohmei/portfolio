@@ -10,6 +10,9 @@ const history = createBrowserHistory()
 function App() {
   return (
     <div className='App'>
+      <div className='hide'>
+        <h1>font load</h1>
+      </div>
       <Router history={history}>
         <header>
           <Link to='/'>maxim yourich</Link>
