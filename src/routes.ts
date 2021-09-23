@@ -1,13 +1,14 @@
-// import Home from './pages/Home/Home'
-// import NotFound from './pages/NotFound'
-// import Works from './pages/Works/Works'
-import loadable from '@loadable/component'
-import pMinDelay from 'p-min-delay'
+import Home from './pages/Home/Home'
+import NotFound from './pages/NotFound'
+import Projects from './pages/Projects/Projects'
+import About from './pages/About/About'
+// import loadable from '@loadable/component'
+// import pMinDelay from 'p-min-delay'
 
-const Home = loadable(() => pMinDelay(import('./pages/Home/Home'), 200))
-const NotFound = loadable(() => pMinDelay(import('./pages/NotFound'), 200))
-const Projects = loadable(() => pMinDelay(import('./pages/Projects/Projects'), 200))
-const About = loadable(() => pMinDelay(import('./pages/About/About'), 200))
+// const Home = loadable(() => pMinDelay(import('./pages/Home/Home'), 300))
+// const NotFound = loadable(() => pMinDelay(import('./pages/NotFound'), 300))
+// const Projects = loadable(() => pMinDelay(import('./pages/Projects/Projects'), 300))
+// const About = loadable(() => pMinDelay(import('./pages/About/About'), 300))
 
 const routes = [
   {

@@ -11,15 +11,17 @@ function App() {
   return (
     <div className='App'>
       <Router history={history}>
-        <Nav />
+        <header>
+          <Link to='/'>maxim yourich</Link>
+        </header>
+
         <Switch>
           {routes.map((route, i) => (
             <Route key={i} path={route.path} component={route.component} exact={route.exact}></Route>
           ))}
         </Switch>
-        <footer>
-          <Link to='/'>maxim yourich</Link>
-        </footer>
+
+        <Nav />
       </Router>
     </div>
   )
