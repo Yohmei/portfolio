@@ -2,13 +2,52 @@
   .App {
     .projects {
       .content {
-        width: 364px;
-        height: 364px;
+        --x: 0;
+        --y: 0;
         margin: 0 auto;
-        content: '';
-        // box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 29px 0px;
-        box-shadow: rgba(255, 255, 255, 0.1) 0px 0 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 0 100px -20px,
-          rgba(0, 0, 0, 0.3) 0px 0 60px -30px;
+        display: flex;
+        align-items: center;
+        height: 80%;
+
+        .project-box {
+          flex-direction: row;
+          display: flex;
+          align-items: center;
+          padding: 0 30px;
+          height: 90%;
+
+          .project {
+            width: 50%;
+            height: 70%;
+            margin: auto;
+          }
+
+          .project.example {
+            height: 60%;
+            content: '';
+            box-shadow: rgba(50, 50, 93, 0.25) var(--x) var(--y) 100px -20px,
+              rgba(0, 0, 0, 0.3) var(--x) var(--y) 60px -30px;
+          }
+
+          .project.description {
+            font-family: $serif_font;
+
+            .description-sack {
+              padding: 20px;
+              height: 100%;
+              margin: auto;
+              overflow: scroll;
+            }
+          }
+        }
+
+        .paginator {
+          height: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: $serif_font;
+        }
       }
     }
   }

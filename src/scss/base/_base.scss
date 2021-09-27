@@ -37,7 +37,6 @@ body {
   background-color: $bg;
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
-  padding: 20px;
   margin: 0;
 }
 
@@ -250,8 +249,7 @@ a {
   }
 
   &:active {
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    transition: color 0.2s;
     color: $font;
   }
 }

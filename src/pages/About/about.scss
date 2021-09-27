@@ -2,50 +2,11 @@
   .App {
     .about {
       .content {
-        height: 70%;
-        width: 60%;
         margin: 0 auto;
-        content: '';
         display: flex;
-        justify-content: space-between;
-        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         font-family: $serif_font;
-
-        .bubble-frame {
-          display: flex;
-          margin: 0 5px;
-          width: 32%;
-          font-size: 14px;
-          line-height: 1.3em;
-
-          .bubble {
-            width: 100%;
-            content: '';
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 29px 0px;
-            padding: 15px;
-
-            ul {
-              li {
-                margin-bottom: 5px;
-              }
-            }
-          }
-
-          .bubble-1 {
-            height: 60%;
-            margin-top: 20%;
-          }
-
-          .bubble-2 {
-            height: 80%;
-            margin-top: 10%;
-          }
-
-          .bubble-3 {
-            height: 50%;
-            margin-top: 30%;
-          }
-        }
       }
     }
   }

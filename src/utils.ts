@@ -33,3 +33,27 @@ export function capitalise_words(string: string | undefined) {
     })
   else return ''
 }
+
+export const getWidth = () => {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  )
+}
+
+export const getHeight = () => {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  )
+}
+
+export const base_log = (x: number, y: number) => {
+  return Math.log(y) / Math.log(x)
+}

@@ -13,14 +13,8 @@ import About from './pages/About/About'
 const routes = [
   {
     component: Home,
-    link_name: 'home',
+    link_name: 'cover',
     path: '/',
-    exact: true,
-  },
-  {
-    component: About,
-    link_name: 'about',
-    path: '/about',
     exact: true,
   },
   {
@@ -29,7 +23,12 @@ const routes = [
     path: '/projects',
     exact: true,
   },
-
+  {
+    component: About,
+    link_name: 'about',
+    path: '/about',
+    exact: true,
+  },
   {
     component: NotFound,
     link_name: '',

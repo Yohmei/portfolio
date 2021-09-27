@@ -1,5 +1,6 @@
 import React from 'react'
 import TestProvider from '../../contextapi/TestProvider'
+import layout from '../layout'
 import Body from './components/Body'
 
 const Projects = () => {
@@ -10,4 +11,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default layout(Projects, 'projects')
