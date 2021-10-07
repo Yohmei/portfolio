@@ -301,7 +301,8 @@ code {
  * ------------------------------------------------------------------- */
 /* width */
 ::-webkit-scrollbar {
-  width: 0;
+  height: 4px;
+  width: 4px;
 }
 
 /* Track */

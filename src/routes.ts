@@ -21,7 +21,7 @@ const routes = [
     component: Projects,
     link_name: 'projects',
     path: '/projects',
-    exact: true,
+    exact: false,
   },
   {
     component: About,

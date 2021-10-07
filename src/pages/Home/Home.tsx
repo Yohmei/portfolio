@@ -44,7 +44,6 @@ const Home = () => {
       <animated.div style={ani_style} className='content'></animated.div>
       <Link to='/projects' className='to-projects'>
         PROJECTS
-        <Scroll />
       </Link>
     </main>
   )

@@ -10,6 +10,33 @@
         height: 80%;
         width: 80%;
 
+        .thumb-vertical {
+          background-color: transparent;
+          box-shadow: 0 0 5px rgba(50, 50, 93, 0.25);
+          border-radius: 10px;
+          margin: 0 -5px;
+          z-index: 1000;
+        }
+
+        .projects-box {
+          padding: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+
+          .project-showcase {
+            width: calc(1920px / 5);
+            height: calc(1080px / 5);
+            box-shadow: rgba(50, 50, 93, 0.25) var(--x) var(--y) 50px -20px;
+            content: '';
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
         .project-box {
           flex-direction: row;
           display: flex;
@@ -36,10 +63,9 @@
             position: relative;
 
             .description-sack {
-              padding: 10px 20px 20px;
+              padding: 8px 20px;
               height: 100%;
               margin: auto;
-              overflow-y: scroll;
 
               p {
                 &:last-child {
@@ -56,6 +82,10 @@
           align-items: center;
           justify-content: center;
           font-family: $serif_font;
+
+          div {
+            margin: 0 10px;
+          }
         }
       }
     }
