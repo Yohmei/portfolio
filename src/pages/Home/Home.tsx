@@ -42,7 +42,7 @@ const Home = () => {
     <main className='home'>
       <div className='signature'>maxim yourich</div>
       <animated.div style={ani_style} className='content'></animated.div>
-      <Link to='/projects' className='to-projects'>
+      <Link to='/projects' className='global-links bottom-link'>
         PROJECTS
       </Link>
     </main>

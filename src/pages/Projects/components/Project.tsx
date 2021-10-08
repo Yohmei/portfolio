@@ -73,11 +73,15 @@ const Project = () => {
           </div>
         </div>
         <div className='paginator'>
-          <Link to='/projects'>
-            <div>left</div>
+          <Link className='to-dashboard-link' to='/projects'>
+            <div>To Dashboard</div>
           </Link>
-          <div className='pages'>1/6</div>
-          <div>right</div>
+          <div className='pages'>
+            <div className='left'>⮞</div>
+            <div className='pages'>1/6</div>
+            <div className='right'>⮞</div>
+          </div>
+          <div className='filler'>To Dashboard</div>
         </div>
       </div>
     </main>

@@ -1,5 +1,6 @@
 #root {
   .App {
+    overflow: hidden;
     .projects {
       .content {
         --x: 0;
@@ -7,14 +8,13 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
-        height: 80%;
+        height: 100%;
         width: 80%;
 
         .thumb-vertical {
           background-color: transparent;
-          box-shadow: 0 0 5px rgba(50, 50, 93, 0.25);
+          box-shadow: 0 0 5px rgba(50, 50, 93, 0.4);
           border-radius: 10px;
-          margin: 0 -5px;
           z-index: 1000;
         }
 
@@ -26,9 +26,9 @@
           align-items: center;
 
           .project-showcase {
-            width: calc(1920px / 5);
-            height: calc(1080px / 5);
-            box-shadow: rgba(50, 50, 93, 0.25) var(--x) var(--y) 50px -20px;
+            width: calc(1920px / 6);
+            height: calc(1080px / 6);
+            box-shadow: rgba(50, 50, 93, 0.5) var(--x) var(--y) 50px -20px;
             content: '';
             margin: 20px;
             display: flex;
@@ -80,11 +80,33 @@
           height: 10%;
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: space-between;
           font-family: $serif_font;
+          width: 100%;
+
+          .to-dashboard-link {
+            margin-left: 50px;
+          }
+
+          .filler {
+            font-family: $sans_font;
+            font-weight: bold;
+            visibility: hidden;
+            pointer-events: none;
+            margin-right: 50px;
+          }
 
           div {
             margin: 0 10px;
+          }
+
+          .pages {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .left {
+              transform: scaleX(-1);
+            }
           }
         }
       }
