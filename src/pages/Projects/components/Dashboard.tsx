@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ParShadows from '../../../components/ParShadows'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Link } from 'react-router-dom'
+import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
 
 const Dashboard = () => {
+  const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
-  const description_ref = React.createRef<HTMLDivElement>()
+  const content_ref = React.createRef<HTMLDivElement>()
 
   useEffect(() => {
-    if (description_ref.current) set_scroll_height(description_ref.current?.scrollHeight - 11)
+    if (content_ref.current) set_scroll_height(content_ref.current?.scrollHeight - 11)
     return () => {}
-  }, [])
+  }, [content_ref])
 
   return (
     <main className='projects'>
-      <div className='content' ref={description_ref}>
+      <div className='content' ref={content_ref}>
         <ParShadows width={'100%'} left={0}>
           <Scrollbars
             autoHide
@@ -27,30 +29,13 @@ const Dashboard = () => {
             renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
           >
             <div className='projects-box'>
-              <Link to={`/projects/${'gala-de-luxe'}`}>
-                <div className='project-showcase'>Gala de Luxe</div>
-              </Link>
-              <Link to={`/projects/${'gala-de-luxe-dashboard'}`}>
-                <div className='project-showcase'>Gala de Luxe Dashboard</div>
-              </Link>
-              <Link to={`/projects/${'kartons'}`}>
-                <div className='project-showcase'>Kartons</div>
-              </Link>
-              <Link to={`/projects/${'refire'}`}>
-                <div className='project-showcase'>ReFire</div>
-              </Link>
-              <Link to={`/projects/${'razzle-starter'}`}>
-                <div className='project-showcase'>Razzle Starter</div>
-              </Link>
-              <Link to={`/projects/${'nature-of-code'}`}>
-                <div className='project-showcase'>Nature of Code</div>
-              </Link>
-              <Link to={`/projects/${'thinker'}`}>
-                <div className='project-showcase'>Thinker</div>
-              </Link>
-              <Link to={`/projects/${'json-web-Token-auth'}`}>
-                <div className='project-showcase'>JSON Web Token Auth</div>
-              </Link>
+              {projects.map((project) => {
+                return (
+                  <Link key={project.id} to={`/projects/${project.id}`}>
+                    <div className='project-showcase'>{project.title}</div>
+                  </Link>
+                )
+              })}
             </div>
           </Scrollbars>
         </ParShadows>

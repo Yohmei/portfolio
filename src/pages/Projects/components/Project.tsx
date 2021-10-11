@@ -16,7 +16,7 @@ const Project = () => {
   useEffect(() => {
     if (description_ref.current) set_scroll_height(description_ref.current?.scrollHeight - 11)
     return () => {}
-  }, [])
+  }, [description_ref])
 
   return (
     <main className='projects'>

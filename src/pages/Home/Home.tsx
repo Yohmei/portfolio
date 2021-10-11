@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { animated, useSpring } from 'react-spring'
 import { base_log, getHeight, getWidth, s } from '../../utils'
 import layout from '../layout'
-import Scroll from './components/Scroll'
 
 const Home = () => {
   const ani_style = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })

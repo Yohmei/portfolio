@@ -1,7 +1,10 @@
 #root {
   .App {
     overflow: hidden;
+
     .projects {
+      overflow: hidden;
+
       .content {
         --x: 0;
         --y: 0;
