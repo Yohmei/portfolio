@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { animated, useSpring } from 'react-spring'
+import { useHistory } from 'react-router-dom'
 import { base_log, getHeight, getWidth, s } from '../../utils'
-import layout from '../layout'
+import layout, { transition_time } from '../layout'
+import { IPageProps } from './../layout'
 
-const Home = () => {
-  const ani_style = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } })
+const Home = ({ set_turning_page, style }: IPageProps) => {
+  const hist = useHistory()
+
+  const turn_page = () => {
+    set_turning_page(true)
+    setTimeout(() => {
+      hist.push('/projects')
+    }, transition_time)
+  }
 
   useEffect(() => {
     const gx_center = getWidth() / 2
@@ -38,12 +45,12 @@ const Home = () => {
   }, [])
 
   return (
-    <main className='home'>
+    <main className='home' style={style}>
       <div className='signature'>maxim yourich</div>
-      <animated.div style={ani_style} className='content'></animated.div>
-      <Link to='/projects' className='global-links bottom-link'>
+      <div className='content'></div>
+      <a onClick={turn_page} className='global-links bottom-link'>
         PROJECTS
-      </Link>
+      </a>
     </main>
   )
 }

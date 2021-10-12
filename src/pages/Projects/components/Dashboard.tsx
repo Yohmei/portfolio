@@ -4,7 +4,7 @@ import { Scrollbars } from 'react-custom-scrollbars'
 import { Link } from 'react-router-dom'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
 
-const Dashboard = () => {
+const Dashboard = ({ style }: any) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const content_ref = React.createRef<HTMLDivElement>()
@@ -15,7 +15,7 @@ const Dashboard = () => {
   }, [content_ref])
 
   return (
-    <main className='projects'>
+    <main className='projects' style={style}>
       <div className='content' ref={content_ref}>
         <ParShadows width={'100%'} left={0}>
           <Scrollbars

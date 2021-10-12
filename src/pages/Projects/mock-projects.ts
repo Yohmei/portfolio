@@ -1,67 +1,65 @@
-import { r_id } from '../../utils'
-
 export interface IProject {
   id: string
   title: string
-  description: string
+  description: string[]
   page: number
   timestamp: Date
 }
 
 export const projects: IProject[] = [
   {
-    id: r_id(),
+    id: '_rd4qi66qqka',
     title: 'Gala de Luxe',
-    description: 'Gala de Luxe description',
+    description: ['Gala de Luxe description'],
     page: 1,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_ysrnjhxmbuf',
     title: 'Gala de Luxe Dashboard',
-    description: 'Gala de Luxe Dashboard description',
+    description: ['Gala de Luxe Dashboard description'],
     page: 2,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_pkn0v37jetl',
     title: 'Kartons',
-    description: 'Kartons description',
+    description: ['Kartons description'],
     page: 3,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_0ctnuurkgosh',
     title: 'ReFire',
-    description: 'ReFire description',
+    description: ['ReFire description'],
     page: 4,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_3auugm5jv5x',
     title: 'Razzle Starter',
-    description: 'Razzle Starter description',
+    description: ['Razzle Starter description'],
     page: 5,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_4lhyct4fsr8',
     title: 'Nature of Code',
-    description: 'Nature of Code description',
+    description: ['Nature of Code description'],
     page: 6,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_a9nt1kctdhl',
     title: 'Thinker',
-    description: 'Thinker description',
+    description: ['Thinker description'],
     page: 7,
     timestamp: new Date(),
   },
   {
-    id: r_id(),
+    id: '_85jmy2ogu0e',
     title: 'JSON Web Token Auth',
-    description: 'JSON Web Token Auth description',
+    description: ['JSON Web Token Auth description'],
     page: 8,
     timestamp: new Date(),
   },
