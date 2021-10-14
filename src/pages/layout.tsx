@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { animated, SpringValue, useTransition } from 'react-spring'
 import { s } from '../utils'
 
 export interface IPageProps {
-  set_turning_page: React.Dispatch<React.SetStateAction<boolean>>
+  turn_page: (to: string) => void
   style: any
 }
 
@@ -13,12 +14,20 @@ const layout = (Page: React.FunctionComponent<any>, child_name: string) => {
   Page = animated(Page)
   return () => {
     const [turning_page, set_turning_page] = useState(false)
+    const hist = useHistory()
     const transition = useTransition(turning_page, {
       from: { opacity: 0 },
       enter: { opacity: 1 },
       leave: { opacity: 0 },
       config: { duration: transition_time },
     })
+
+    const turn_page = (to: string) => {
+      set_turning_page(true)
+      setTimeout(() => {
+        hist.push(to)
+      }, transition_time)
+    }
 
     useEffect(() => {
       s(`.bookmark-${child_name}`).style.setProperty('--bg-color', '#000')
@@ -32,7 +41,7 @@ const layout = (Page: React.FunctionComponent<any>, child_name: string) => {
     return (
       <>
         {transition((style, condition) => {
-          return condition ? '' : <Page style={style} set_turning_page={set_turning_page} />
+          return condition ? '' : <Page style={style} turn_page={turn_page} />
         })}
       </>
     )

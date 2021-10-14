@@ -4,16 +4,7 @@ import { base_log, getHeight, getWidth, s } from '../../utils'
 import layout, { transition_time } from '../layout'
 import { IPageProps } from './../layout'
 
-const Home = ({ set_turning_page, style }: IPageProps) => {
-  const hist = useHistory()
-
-  const turn_page = () => {
-    set_turning_page(true)
-    setTimeout(() => {
-      hist.push('/projects')
-    }, transition_time)
-  }
-
+const Home = ({ turn_page, style }: IPageProps) => {
   useEffect(() => {
     const gx_center = getWidth() / 2
     const gy_center = getHeight() / 2
@@ -48,7 +39,7 @@ const Home = ({ set_turning_page, style }: IPageProps) => {
     <main className='home' style={style}>
       <div className='signature'>maxim yourich</div>
       <div className='content'></div>
-      <a onClick={turn_page} className='global-links bottom-link'>
+      <a onClick={() => turn_page('/projects')} className='global-links bottom-link'>
         PROJECTS
       </a>
     </main>

@@ -1,12 +1,19 @@
 #root {
   .App {
     .about {
+      overflow: hidden;
+
+      .about-link {
+        padding: 0;
+      }
+
       .content {
         margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: $serif_font;
+        height: 100%;
       }
     }
   }

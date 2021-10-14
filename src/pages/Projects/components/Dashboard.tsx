@@ -3,8 +3,9 @@ import ParShadows from '../../../components/ParShadows'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Link } from 'react-router-dom'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
+import { IPageProps } from '../../layout'
 
-const Dashboard = ({ style }: any) => {
+const Dashboard = ({ style, turn_page }: IPageProps) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const content_ref = React.createRef<HTMLDivElement>()
@@ -31,9 +32,14 @@ const Dashboard = ({ style }: any) => {
             <div className='projects-box'>
               {projects.map((project) => {
                 return (
-                  <Link key={project.id} to={`/projects/${project.id}`}>
+                  <a
+                    key={project.id}
+                    onClick={() => {
+                      turn_page(`/projects/${project.id}`)
+                    }}
+                  >
                     <div className='project-showcase'>{project.title}</div>
-                  </Link>
+                  </a>
                 )
               })}
             </div>

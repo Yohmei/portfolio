@@ -3,13 +3,14 @@ import { Scrollbars } from 'react-custom-scrollbars'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
+import { IPageProps } from '../../layout'
 import { IProject } from './../mock-projects'
 
 interface IPathParams {
   project_id: string
 }
 
-const Project = () => {
+const Project = ({ style }: any) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const description_ref = React.createRef<HTMLDivElement>()
@@ -46,7 +47,7 @@ const Project = () => {
   }, [projects, project_id])
 
   return (
-    <main className='projects'>
+    <main className='projects' style={style}>
       <div className='content'>
         <div className='project-box'>
           <div className='project example'></div>
