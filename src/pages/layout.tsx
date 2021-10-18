@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { animated, SpringValue, useTransition } from 'react-spring'
+import { animated, useTransition } from 'react-spring'
 import { s } from '../utils'
 
 export interface IPageProps {

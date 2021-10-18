@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { base_log, getHeight, getWidth, s } from '../../utils'
-import layout, { transition_time } from '../layout'
+import layout from '../layout'
 import { IPageProps } from './../layout'
 
 const Home = ({ turn_page, style }: IPageProps) => {
@@ -39,9 +38,9 @@ const Home = ({ turn_page, style }: IPageProps) => {
     <main className='home' style={style}>
       <div className='signature'>maxim yourich</div>
       <div className='content'></div>
-      <a onClick={() => turn_page('/projects')} className='global-links bottom-link'>
+      <div onClick={() => turn_page('/projects')} className='global-links bottom-link'>
         PROJECTS
-      </a>
+      </div>
     </main>
   )
 }

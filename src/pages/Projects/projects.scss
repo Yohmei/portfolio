@@ -29,6 +29,7 @@
           align-items: center;
 
           .project-showcase {
+            cursor: pointer;
             width: calc(1920px / 6);
             height: calc(1080px / 6);
             box-shadow: rgba(50, 50, 93, 0.5) var(--x) var(--y) 50px -20px;
@@ -108,6 +109,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            .left,
+            .right {
+              cursor: pointer;
+            }
+
             .left {
               transform: scaleX(-1);
             }
