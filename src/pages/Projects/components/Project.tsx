@@ -11,7 +11,11 @@ interface IPathParams {
   project_id: string
 }
 
-const Project = () => {
+interface IProjectProps {
+  set_coming_from_project: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Project = ({ set_coming_from_project }: IProjectProps) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const description_ref = React.createRef<HTMLDivElement>()
@@ -38,9 +42,8 @@ const Project = () => {
   }
 
   const open_dashboard = () => {
-    let amplifier = 150
     set_turning_project_page(true)
-    set_amplifier(amplifier)
+    set_coming_from_project(true)
     setTimeout(() => {
       hist.push(`/projects`)
     }, transition_time)

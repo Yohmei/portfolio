@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { PrevPathContext } from '../contextapi/PrevPathProvider'
 import routes from '../routes'
 import { s, sa } from '../utils'
 
 const Nav = () => {
   const nav_ref = React.createRef<HTMLElement>()
+  const { path, set_path } = useContext(PrevPathContext)
+  const hist = useHistory()
+
+  const turn_page = (to: string) => {
+    set_path({ next_path: to, prev_path: '' })
+    setTimeout(() => {
+      hist.push(to)
+    }, 0)
+  }
 
   useEffect(() => {
     const nav = nav_ref.current
     const show_nav_content = () => {
-      if (s('li > a > span')) {
-        const els = sa('li > a > span')
+      if (s('li > div > span')) {
+        const els = sa('li > div > span')
         for (let i = 0; i < els.length; i++) {
           const el = els[i]
           el.style.setProperty('--opacity', '1')
@@ -19,8 +29,8 @@ const Nav = () => {
     }
 
     const hide_nav_content = () => {
-      if (s('li > a > span')) {
-        const els = sa('li > a > span')
+      if (s('li > div > span')) {
+        const els = sa('li > div > span')
         for (let i = 0; i < els.length; i++) {
           const el = els[i]
           el.style.setProperty('--opacity', '0')
@@ -48,10 +58,10 @@ const Nav = () => {
           if (route.link_name !== '')
             return (
               <li key={i}>
-                <Link to={route.path} className={`link-${route.link_name}`}>
+                <div onClick={() => turn_page(route.path)} className={`nav-link link-${route.link_name}`}>
                   <div className={`bookmark bookmark-${route.link_name}`}></div>
                   <span>{route.link_name.toUpperCase()}</span>
-                </Link>
+                </div>
               </li>
             )
           else return ''

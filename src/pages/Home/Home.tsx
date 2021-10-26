@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { PrevPathContext } from '../../contextapi/PrevPathProvider'
 import { base_log, getHeight, getWidth, s } from '../../utils'
 import layout from '../layout'
 import { IPageProps } from './../layout'
 
-const Home = ({ turn_page, style }: IPageProps) => {
+const Home = ({ turn_page, opacity, to }: IPageProps) => {
+  const { path } = useContext(PrevPathContext)
+
   useEffect(() => {
     const gx_center = getWidth() / 2
     const gy_center = getHeight() / 2
@@ -35,7 +38,19 @@ const Home = ({ turn_page, style }: IPageProps) => {
   }, [])
 
   return (
-    <main className='home' style={style}>
+    <main
+      className='home'
+      style={{
+        opacity,
+        transform: to(opacity, (coord: number) => {
+          let new_coord = 0.5 - coord
+          new_coord = 0.5 + new_coord
+
+          if (path.next_path === '/projects' || path.prev_path === '/projects')
+            return `translate3d(0,${new_coord * -150}px,0)`
+        }),
+      }}
+    >
       <div className='signature'>maxim yourich</div>
       <div className='content'></div>
       <div onClick={() => turn_page('/projects')} className='global-links bottom-link'>

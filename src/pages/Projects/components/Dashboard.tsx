@@ -5,10 +5,17 @@ import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
 import { useHistory } from 'react-router-dom'
 import { transition_time } from '../../layout'
 import { animated, useTransition } from 'react-spring'
+import { PrevPathContext } from '../../../contextapi/PrevPathProvider'
 
-const Dashboard = () => {
+interface IDashboardProps {
+  coming_from_project: boolean
+  set_coming_from_project: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Dashboard = ({ coming_from_project, set_coming_from_project }: IDashboardProps) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
+  const { path } = useContext(PrevPathContext)
   const hist = useHistory()
   const content_ref = React.createRef<HTMLDivElement>()
   const [turning_project_page, set_turning_project_page] = useState(false)
@@ -22,6 +29,7 @@ const Dashboard = () => {
 
   const open_project = (path: string) => {
     set_turning_project_page(true)
+    set_coming_from_project(true)
     setTimeout(() => {
       hist.push(path)
     }, transition_time)
@@ -41,10 +49,13 @@ const Dashboard = () => {
           <animated.div
             style={{
               opacity,
-              transform: opacity.to((x: number) => {
-                let new_x = 0.5 - x
-                new_x = 0.5 + new_x
-                return `translate3d(${new_x * -150}px,0,0)`
+              transform: opacity.to((coord: number) => {
+                let new_coord = 0.5 - coord
+                new_coord = 0.5 + new_coord
+
+                if (coming_from_project) return `translate3d(${new_coord * -150}px,0,0)`
+                else if (path.prev_path === '/') return `translate3d(0,${new_coord * 150}px,0)`
+                else if (path.prev_path === '/about') return `translate3d(0,${new_coord * -150}px,0)`
               }),
             }}
             className='content'
