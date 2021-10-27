@@ -15,7 +15,7 @@ const About = ({ turn_page, opacity, to }: IPageProps) => {
           new_coord = 0.5 + new_coord
 
           if (path.next_path === '/projects' || path.prev_path === '/projects')
-            return `translate3d(0,${new_coord * 150}px,0)`
+            return `translate3d(0,${new_coord * 100}px,0)`
         }),
       }}
     >

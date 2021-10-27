@@ -1,29 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
+import { useHistory } from 'react-router-dom'
+import { animated, useTransition } from 'react-spring'
 import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
-import { useHistory } from 'react-router-dom'
+import { spring_easing } from '../../../utils'
 import { transition_time } from '../../layout'
-import { animated, useTransition } from 'react-spring'
-import { PrevPathContext } from '../../../contextapi/PrevPathProvider'
 
 interface IDashboardProps {
   coming_from_project: boolean
   set_coming_from_project: React.Dispatch<React.SetStateAction<boolean>>
+  turning_project_page: boolean
+  set_turning_project_page: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Dashboard = ({ coming_from_project, set_coming_from_project }: IDashboardProps) => {
+const Dashboard = ({
+  coming_from_project,
+  set_coming_from_project,
+  turning_project_page,
+  set_turning_project_page,
+}: IDashboardProps) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
-  const { path } = useContext(PrevPathContext)
   const hist = useHistory()
   const content_ref = React.createRef<HTMLDivElement>()
-  const [turning_project_page, set_turning_project_page] = useState(false)
-  const transition = useTransition(turning_project_page, {
+  let transition = useTransition(turning_project_page, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: transition_time },
+    config: { duration: transition_time, easing: (t) => spring_easing(t) },
     onRest: () => set_turning_project_page(false),
   })
 
@@ -36,8 +41,11 @@ const Dashboard = ({ coming_from_project, set_coming_from_project }: IDashboardP
   }
 
   useEffect(() => {
-    if (content_ref.current) set_scroll_height(content_ref.current?.scrollHeight - 11)
-    return () => {}
+    let is_mounted = true
+    if (content_ref.current && is_mounted) set_scroll_height(content_ref.current?.scrollHeight - 11)
+    return () => {
+      is_mounted = false
+    }
   }, [content_ref])
 
   return (
@@ -53,9 +61,7 @@ const Dashboard = ({ coming_from_project, set_coming_from_project }: IDashboardP
                 let new_coord = 0.5 - coord
                 new_coord = 0.5 + new_coord
 
-                if (coming_from_project) return `translate3d(${new_coord * -150}px,0,0)`
-                else if (path.prev_path === '/') return `translate3d(0,${new_coord * 150}px,0)`
-                else if (path.prev_path === '/about') return `translate3d(0,${new_coord * -150}px,0)`
+                if (coming_from_project) return `translate3d(${new_coord * -100}px,0,0)`
               }),
             }}
             className='content'

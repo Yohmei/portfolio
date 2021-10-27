@@ -99,6 +99,8 @@
               transition: opacity 0.2s ease-in-out;
               font-weight: bold;
               cursor: pointer;
+              text-transform: lowercase;
+              transform: translate3d(0, -1px, 0);
             }
           }
         }
@@ -106,7 +108,7 @@
     }
 
     .global-links {
-      letter-spacing: 3px;
+      letter-spacing: 5px;
       width: 100%;
       font-weight: normal;
       height: 140px;
@@ -117,50 +119,16 @@
       flex: 1 1 auto;
       position: relative;
       cursor: pointer;
+      font-size: 1.1em;
+      text-transform: lowercase;
     }
 
     .top-link {
       padding-bottom: 50px;
-
-      &:before {
-        position: absolute;
-        content: '';
-        width: 100%;
-        height: 50px;
-        background-color: black;
-        top: -50px;
-        transition: box-shadow 0.3s ease-in-out;
-      }
-
-      &:hover {
-        color: $font;
-
-        &:before {
-          box-shadow: 0px 0px 50px -10px rgba(50, 50, 93, 0.6), 0px 0px 50px -10px rgba(0, 0, 0, 0.6);
-        }
-      }
     }
 
     .bottom-link {
       padding-top: 50px;
-
-      &:hover {
-        color: $font;
-
-        &:after {
-          box-shadow: 0px 0px 50px -10px rgba(50, 50, 93, 0.6), 0px 0px 50px -10px rgba(0, 0, 0, 0.6);
-        }
-      }
-
-      &:after {
-        position: absolute;
-        content: '';
-        width: 100%;
-        height: 50px;
-        background-color: black;
-        bottom: -50px;
-        transition: box-shadow 0.3s ease-in-out;
-      }
     }
 
     .bottom-link.projects-link {

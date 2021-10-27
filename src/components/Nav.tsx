@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { PrevPathContext } from '../contextapi/PrevPathProvider'
 import routes from '../routes'
 import { s, sa } from '../utils'
 
 const Nav = () => {
   const nav_ref = React.createRef<HTMLElement>()
-  const { path, set_path } = useContext(PrevPathContext)
+  const { set_path } = useContext(PrevPathContext)
   const hist = useHistory()
 
   const turn_page = (to: string) => {

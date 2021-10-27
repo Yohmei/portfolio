@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
-import { Link, useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
 import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
+import { spring_easing } from '../../../utils'
 import { transition_time } from '../../layout'
 import { IProject } from './../mock-projects'
 
@@ -13,22 +14,23 @@ interface IPathParams {
 
 interface IProjectProps {
   set_coming_from_project: React.Dispatch<React.SetStateAction<boolean>>
+  turning_project_page: boolean
+  set_turning_project_page: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Project = ({ set_coming_from_project }: IProjectProps) => {
+const Project = ({ set_coming_from_project, turning_project_page, set_turning_project_page }: IProjectProps) => {
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const description_ref = React.createRef<HTMLDivElement>()
   const { project_id } = useParams<IPathParams>()
   const hist = useHistory()
   const [project, set_project] = useState<IProject>()
-  const [turning_project_page, set_turning_project_page] = useState(false)
-  const [amplifier, set_amplifier] = useState(150)
-  const transition = useTransition(turning_project_page, {
+  const [amplifier, set_amplifier] = useState(100)
+  let transition = useTransition(turning_project_page, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { duration: transition_time },
+    config: { duration: transition_time, easing: (t) => spring_easing(t) },
     onRest: () => set_turning_project_page(false),
   })
 
@@ -53,7 +55,7 @@ const Project = ({ set_coming_from_project }: IProjectProps) => {
     let proj_id = ''
     if (project) proj_id = get_proj_id(project?.page + n)
     if (proj_id !== 'not found' && proj_id !== '') {
-      let amplifier = 150
+      let amplifier = 100
       if (project) {
         if (project?.page < project?.page + n) set_amplifier(-amplifier)
         else set_amplifier(amplifier)
@@ -72,8 +74,11 @@ const Project = ({ set_coming_from_project }: IProjectProps) => {
   }
 
   useEffect(() => {
-    if (description_ref.current) set_scroll_height(description_ref.current?.scrollHeight - 11)
-    return () => {}
+    let is_mounted = true
+    if (description_ref.current && is_mounted) set_scroll_height(description_ref.current?.scrollHeight - 11)
+    return () => {
+      is_mounted = false
+    }
   }, [description_ref])
 
   useEffect(() => {

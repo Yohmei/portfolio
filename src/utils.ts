@@ -57,3 +57,7 @@ export const getHeight = () => {
 export const base_log = (x: number, y: number) => {
   return Math.log(y) / Math.log(x)
 }
+
+export const spring_easing = (x: number): number => {
+  return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2
+}
