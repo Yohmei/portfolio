@@ -90,12 +90,13 @@
           width: 100%;
 
           .to-dashboard-link {
+            font-family: $sans_font;
             margin-left: 50px;
+            cursor: pointer;
           }
 
           .filler {
             font-family: $sans_font;
-            font-weight: bold;
             visibility: hidden;
             pointer-events: none;
             margin-right: 50px;

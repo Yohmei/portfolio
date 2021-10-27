@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
 import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
-import { spring_easing } from '../../../utils'
+import { s, spring_easing } from '../../../utils'
 import { transition_time } from '../../layout'
 import { IProject } from './../mock-projects'
 
@@ -89,6 +89,23 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
     if (proj[0]) set_project(proj[0])
   }, [projects, project_id])
 
+  useEffect(() => {
+    const dashboard_link_mouseover_listener = () => (s('body').style.transform = 'translate3d(20px, 0, 0)')
+    const link_mouseleave_listener = () => (s('body').style.transform = 'translate3d(0, 0, 0)')
+
+    if (s('.to-dashboard-link')) {
+      s('.to-dashboard-link').addEventListener('mouseover', dashboard_link_mouseover_listener)
+      s('.to-dashboard-link').addEventListener('mouseleave', link_mouseleave_listener)
+    }
+
+    return () => {
+      if (s('.to-dashboard-link')) {
+        s('.to-dashboard-link').removeEventListener('mouseover', dashboard_link_mouseover_listener)
+        s('.to-dashboard-link').removeEventListener('mouseleave', link_mouseleave_listener)
+      }
+    }
+  }, [])
+
   return (
     <div className='content'>
       {transition(({ opacity }: any, condition) => {
@@ -133,7 +150,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
       })}
       <div className='paginator'>
         <div onClick={open_dashboard} className='to-dashboard-link'>
-          <div>To Dashboard</div>
+          Dashboard
         </div>
         <div className='pages'>
           <div className='left' onClick={() => turn_project_page(-1)}>
@@ -146,7 +163,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
             ⮞
           </div>
         </div>
-        <div className='filler'>To Dashboard</div>
+        <div className='filler'>Dashboard</div>
       </div>
     </div>
   )
