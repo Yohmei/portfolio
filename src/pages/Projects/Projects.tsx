@@ -12,46 +12,44 @@ const Projects = ({ turn_page, opacity, to }: IPageProps) => {
   const { path } = useContext(PrevPathContext)
 
   return (
-    <ProjectsProvider>
-      <main
-        className='projects'
-        style={{
-          opacity: opacity,
-          transform: to(opacity, (coord: number) => {
-            let new_coord = 0.5 - coord
-            new_coord = 0.5 + new_coord
+    <main
+      className='projects'
+      style={{
+        opacity: opacity,
+        transform: to(opacity, (coord: number) => {
+          let new_coord = 0.5 - coord
+          new_coord = 0.5 + new_coord
 
-            if (path.next_path === '/' || path.prev_path === '/') return `translate3d(0,${new_coord * 100}px,0)`
-            else if (path.next_path === '/about' || path.prev_path === '/about')
-              return `translate3d(0,${new_coord * -100}px,0)`
-          }),
-        }}
-      >
-        <div onClick={() => turn_page('/')} className='global-links top-link projects-link'>
-          COVER
-        </div>
-        <Switch>
-          <Route exact path='/projects'>
-            <Dashboard
-              coming_from_project={coming_from_project}
-              set_coming_from_project={set_coming_from_project}
-              turning_project_page={turning_project_page}
-              set_turning_project_page={set_turning_project_page}
-            />
-          </Route>
-          <Route path={`/projects/:project_id`}>
-            <Project
-              set_coming_from_project={set_coming_from_project}
-              turning_project_page={turning_project_page}
-              set_turning_project_page={set_turning_project_page}
-            />
-          </Route>
-        </Switch>
-        <div onClick={() => turn_page('/about')} className='global-links bottom-link projects-link'>
-          ABOUT
-        </div>
-      </main>
-    </ProjectsProvider>
+          if (path.next_path === '/' || path.prev_path === '/') return `translate3d(0,${new_coord * 100}px,0)`
+          else if (path.next_path === '/about' || path.prev_path === '/about')
+            return `translate3d(0,${new_coord * -100}px,0)`
+        }),
+      }}
+    >
+      <div onClick={() => turn_page('/')} className='global-links top-link projects-link'>
+        COVER
+      </div>
+      <Switch>
+        <Route exact path='/projects'>
+          <Dashboard
+            coming_from_project={coming_from_project}
+            set_coming_from_project={set_coming_from_project}
+            turning_project_page={turning_project_page}
+            set_turning_project_page={set_turning_project_page}
+          />
+        </Route>
+        <Route path={`/projects/:project_id`}>
+          <Project
+            set_coming_from_project={set_coming_from_project}
+            turning_project_page={turning_project_page}
+            set_turning_project_page={set_turning_project_page}
+          />
+        </Route>
+      </Switch>
+      <div onClick={() => turn_page('/about')} className='global-links bottom-link projects-link'>
+        ABOUT
+      </div>
+    </main>
   )
 }
 

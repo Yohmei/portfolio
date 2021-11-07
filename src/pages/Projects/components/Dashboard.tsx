@@ -29,7 +29,7 @@ const Dashboard = ({
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     config: { duration: transition_time, easing: (t) => spring_easing(t) },
-    onRest: () => set_turning_project_page(false),
+    onRest: () => turning_project_page && set_turning_project_page(false),
   })
 
   const open_project = (path: string) => {

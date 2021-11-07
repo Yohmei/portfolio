@@ -36,8 +36,10 @@
             content: '';
             margin: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 20px;
+            font-family: $serif_font;
           }
         }
 

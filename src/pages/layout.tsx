@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
-import { spring_easing, s } from '../utils'
+import ProjectsProvider, { ProjectsContext } from '../contextapi/ProjectsProvider'
+import { s, spring_easing } from '../utils'
 import { PrevPathContext } from './../contextapi/PrevPathProvider'
 
 export interface IPageProps {
@@ -15,10 +16,11 @@ export const transition_time = 200
 const layout = (Page: React.FunctionComponent<any>, child_name: string) => {
   Page = animated(Page)
   return () => {
+    const { projects } = useContext(ProjectsContext)
     const [turning_page, set_turning_page] = useState(false)
     const { set_path } = useContext(PrevPathContext)
     const hist = useHistory()
-    const transition = useTransition(turning_page, {
+    const transition = useTransition(turning_page && projects.length !== 0, {
       from: { opacity: 0 },
       enter: { opacity: 1 },
       leave: { opacity: 0 },
