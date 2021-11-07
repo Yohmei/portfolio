@@ -30,16 +30,35 @@
 
           .project-showcase {
             cursor: pointer;
-            width: calc(1920px / 6);
-            height: calc(1080px / 6);
+            width: calc(1980px / 6);
+            height: calc(1180px / 6);
             box-shadow: rgba(50, 50, 93, 0.5) var(--x) var(--y) 50px -20px;
+            border: 10px solid $bg;
             content: '';
             margin: 20px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            padding: 20px;
             font-family: $serif_font;
+
+            .proj-img {
+              background-size: contain;
+              background-position: center center;
+              background-repeat: no-repeat;
+              padding: 20px;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: flex-end;
+              align-items: flex-end;
+
+              div {
+                background-color: $bg;
+                width: max-content;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                padding: 5px 15px;
+                transform: translate3d(40px, 8px, 0);
+              }
+            }
           }
         }
 

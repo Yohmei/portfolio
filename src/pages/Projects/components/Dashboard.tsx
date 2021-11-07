@@ -6,6 +6,7 @@ import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
 import { spring_easing } from '../../../utils'
 import { transition_time } from '../../layout'
+import gl from '../../../assets/img/gl.png'
 
 interface IDashboardProps {
   coming_from_project: boolean
@@ -87,7 +88,11 @@ const Dashboard = ({
                           open_project(`/projects/${project.id}`)
                         }}
                       >
-                        <div className='project-showcase'>{project.title}</div>
+                        <div className='project-showcase'>
+                          <div className='proj-img' style={{ backgroundImage: `url(${gl})` }}>
+                            <div>{project.title}</div>
+                          </div>
+                        </div>
                       </div>
                     )
                   })}
