@@ -94,10 +94,12 @@
           .to-dashboard-link {
             font-family: $sans_font;
             margin-left: 50px;
+            letter-spacing: 1px;
             cursor: pointer;
           }
 
           .filler {
+            letter-spacing: 1px;
             font-family: $sans_font;
             visibility: hidden;
             pointer-events: none;

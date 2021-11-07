@@ -41,72 +41,6 @@
     flex-direction: column;
     justify-content: space-between;
 
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      height: 100%;
-      top: 0;
-      left: 0;
-      padding-left: 50px;
-      @include media('<desktop') {
-        padding-left: 20px;
-      }
-
-      ul {
-        list-style: none;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        li {
-          margin: 10px 0;
-
-          .nav-link {
-            display: flex;
-            align-items: center;
-
-            &.disabled-link {
-              pointer-events: none;
-            }
-
-            .bookmark {
-              content: '';
-              --size: 14px;
-              --bg-color: transparent;
-              width: var(--size);
-              height: var(--size);
-              border: 3px solid $font;
-              margin-right: 10px;
-              background-color: var(--bg-color);
-              transition: background-color 0.2s ease-in-out;
-            }
-
-            &:hover > .bookmark {
-              background-color: $hover;
-            }
-
-            &:active > .bookmark {
-              background-color: $font;
-            }
-
-            span {
-              --opacity: 0;
-              letter-spacing: 3px;
-              opacity: var(--opacity);
-              transition: opacity 0.2s ease-in-out;
-              font-weight: bold;
-              cursor: pointer;
-              text-transform: lowercase;
-              transform: translate3d(0, -1px, 0);
-            }
-          }
-        }
-      }
-    }
-
     .global-links {
       letter-spacing: 8px;
       width: 100%;
@@ -125,10 +59,30 @@
 
     .top-link {
       padding-bottom: 50px;
+
+      .up {
+        width: 20px;
+        height: 20px;
+        content: '';
+        transform: rotate(45deg);
+        border-top: 1px solid $font;
+        border-left: 1px solid $font;
+        opacity: 0.3;
+      }
     }
 
     .bottom-link {
       padding-top: 50px;
+
+      .down {
+        opacity: 0.3;
+        border-bottom: 1px solid $font;
+        border-right: 1px solid $font;
+        width: 20px;
+        height: 20px;
+        content: '';
+        transform: rotate(45deg);
+      }
     }
 
     .bottom-link.projects-link {

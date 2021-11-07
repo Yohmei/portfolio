@@ -20,7 +20,7 @@ const About = ({ turn_page, opacity, to }: IPageProps) => {
       }}
     >
       <div onClick={() => turn_page('/projects')} className='global-links top-link about-link'>
-        PROJECTS
+        <div className='up'></div>
       </div>
       <div className='content'>
         <h1>About</h1>

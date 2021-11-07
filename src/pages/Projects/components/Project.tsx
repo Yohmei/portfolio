@@ -150,7 +150,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
       })}
       <div className='paginator'>
         <div onClick={open_dashboard} className='to-dashboard-link'>
-          Dashboard
+          back
         </div>
         <div className='pages'>
           <div className='left' onClick={() => turn_project_page(-1)}>
@@ -163,7 +163,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
             ⮞
           </div>
         </div>
-        <div className='filler'>Dashboard</div>
+        <div className='filler'>back</div>
       </div>
     </div>
   )

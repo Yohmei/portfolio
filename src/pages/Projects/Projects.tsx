@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { PrevPathContext } from '../../contextapi/PrevPathProvider'
-import ProjectsProvider from '../../contextapi/ProjectsProvider'
 import layout, { IPageProps } from '../layout'
 import Dashboard from './components/Dashboard'
 import Project from './components/Project'
@@ -27,7 +26,7 @@ const Projects = ({ turn_page, opacity, to }: IPageProps) => {
       }}
     >
       <div onClick={() => turn_page('/')} className='global-links top-link projects-link'>
-        COVER
+        <div className='up'></div>
       </div>
       <Switch>
         <Route exact path='/projects'>
@@ -47,7 +46,7 @@ const Projects = ({ turn_page, opacity, to }: IPageProps) => {
         </Route>
       </Switch>
       <div onClick={() => turn_page('/about')} className='global-links bottom-link projects-link'>
-        ABOUT
+        <div className='down'></div>
       </div>
     </main>
   )

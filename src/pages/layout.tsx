@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
-import ProjectsProvider, { ProjectsContext } from '../contextapi/ProjectsProvider'
+import { ProjectsContext } from '../contextapi/ProjectsProvider'
 import { s, spring_easing } from '../utils'
 import { PrevPathContext } from './../contextapi/PrevPathProvider'
 

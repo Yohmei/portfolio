@@ -1,0 +1,67 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-left: 50px;
+
+  @include media('<desktop') {
+    padding-left: 20px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    li {
+      margin: 10px 0;
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        opacity: 0.6;
+
+        &.disabled-link {
+          pointer-events: none;
+        }
+
+        .bookmark {
+          content: '';
+          --size: 14px;
+          --bg-color: transparent;
+          width: var(--size);
+          height: var(--size);
+          border: 2px solid $font;
+          margin-right: 10px;
+          background-color: var(--bg-color);
+          transition: background-color 0.2s ease-in-out;
+        }
+
+        &:hover > .bookmark {
+          background-color: $hover;
+        }
+
+        &:active > .bookmark {
+          background-color: $font;
+        }
+
+        span {
+          --opacity: 0;
+          letter-spacing: 3px;
+          opacity: var(--opacity);
+          transition: opacity 0.2s ease-in-out;
+          font-weight: bold;
+          cursor: pointer;
+          text-transform: lowercase;
+          transform: translate3d(0, -1px, 0);
+        }
+      }
+    }
+  }
+}
