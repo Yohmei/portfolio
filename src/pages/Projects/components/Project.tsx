@@ -44,6 +44,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
   }
 
   const open_dashboard = () => {
+    s('body').style.transform = 'translate3d(0, 0, 0)'
     set_turning_project_page(true)
     set_coming_from_project(true)
     setTimeout(() => {
