@@ -91,8 +91,14 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
   }, [projects, project_id])
 
   useEffect(() => {
-    const dashboard_link_mouseover_listener = () => (s('body').style.transform = 'translate3d(20px, 0, 0)')
-    const link_mouseleave_listener = () => (s('body').style.transform = 'translate3d(0, 0, 0)')
+    const dashboard_link_mouseover_listener = () => {
+      s('body').style.transform = 'translate3d(20px, 0, 0)'
+      s('.filler').style.letterSpacing = '10px'
+    }
+    const link_mouseleave_listener = () => {
+      s('body').style.transform = 'translate3d(0, 0, 0)'
+      s('.filler').style.letterSpacing = '0'
+    }
 
     if (s('.to-dashboard-link')) {
       s('.to-dashboard-link').addEventListener('mouseover', dashboard_link_mouseover_listener)
@@ -124,7 +130,11 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
             }}
             className='project-box'
           >
-            <div className='project example'></div>
+            <div
+              id={project && project.id}
+              className='project example'
+              style={{ backgroundImage: `url(${project?.img_url})` }}
+            ></div>
             <div className='project description' ref={description_ref}>
               <ParShadows>
                 <Scrollbars

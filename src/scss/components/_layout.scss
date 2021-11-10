@@ -31,6 +31,21 @@
   }
 }
 
+@keyframes cube-animation {
+  0% {
+    width: 310px;
+    height: 310px;
+  }
+  50% {
+    width: 250px;
+    height: 250px;
+  }
+  100% {
+    width: 310px;
+    height: 310px;
+  }
+}
+
 #root {
   height: 100%;
 
@@ -40,6 +55,28 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .curtain {
+      opacity: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $bg;
+      z-index: 100000;
+
+      .loading {
+        width: 50px;
+        height: 50px;
+        content: '';
+        animation: cube-animation 4s cubic-bezier(0.25, 0.5, 0.75, 0.7) infinite;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 100px -20px, rgba(0, 0, 0, 0.3) 0px 0px 60px -30px;
+      }
+    }
 
     .global-links {
       letter-spacing: 8px;
@@ -67,7 +104,7 @@
         transform: rotate(45deg);
         border-top: 1px solid $font;
         border-left: 1px solid $font;
-        opacity: 0.3;
+        opacity: 0.5;
       }
     }
 
@@ -75,7 +112,7 @@
       padding-top: 50px;
 
       .down {
-        opacity: 0.3;
+        opacity: 0.5;
         border-bottom: 1px solid $font;
         border-right: 1px solid $font;
         width: 20px;

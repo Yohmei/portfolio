@@ -4,6 +4,8 @@ export interface IProject {
   description: string[]
   page: number
   timestamp: Date
+  img: string
+  img_url?: string
 }
 
 export const projects: IProject[] = [
@@ -13,6 +15,7 @@ export const projects: IProject[] = [
     description: ['Gala de Luxe description'],
     page: 1,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_ysrnjhxmbuf',
@@ -20,6 +23,7 @@ export const projects: IProject[] = [
     description: ['Gala de Luxe Dashboard description'],
     page: 2,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_pkn0v37jetl',
@@ -27,6 +31,7 @@ export const projects: IProject[] = [
     description: ['Kartons description'],
     page: 3,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_0ctnuurkgosh',
@@ -34,6 +39,7 @@ export const projects: IProject[] = [
     description: ['ReFire description'],
     page: 4,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_3auugm5jv5x',
@@ -41,6 +47,7 @@ export const projects: IProject[] = [
     description: ['Razzle Starter description'],
     page: 5,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_4lhyct4fsr8',
@@ -48,6 +55,7 @@ export const projects: IProject[] = [
     description: ['Nature of Code description'],
     page: 6,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_a9nt1kctdhl',
@@ -55,6 +63,7 @@ export const projects: IProject[] = [
     description: ['Thinker description'],
     page: 7,
     timestamp: new Date(),
+    img: '',
   },
   {
     id: '_85jmy2ogu0e',
@@ -62,5 +71,6 @@ export const projects: IProject[] = [
     description: ['JSON Web Token Auth description'],
     page: 8,
     timestamp: new Date(),
+    img: '',
   },
 ]

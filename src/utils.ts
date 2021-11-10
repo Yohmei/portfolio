@@ -61,3 +61,28 @@ export const base_log = (x: number, y: number) => {
 export const spring_easing = (x: number): number => {
   return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2
 }
+
+export const request = (method: string, url: string, response_type: XMLHttpRequestResponseType) => {
+  return new Promise(function (resolve, reject) {
+    let xhr = new XMLHttpRequest()
+    xhr.responseType = response_type
+    xhr.open(method, url)
+    xhr.onload = function () {
+      if (this.status >= 200 && this.status < 300) {
+        resolve(xhr.response)
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText,
+        })
+      }
+    }
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText,
+      })
+    }
+    xhr.send()
+  })
+}

@@ -49,6 +49,12 @@
               justify-content: flex-end;
               align-items: flex-end;
 
+              &:hover {
+                div {
+                  opacity: 0;
+                }
+              }
+
               div {
                 background-color: $bg;
                 width: max-content;
@@ -57,6 +63,7 @@
                 align-items: flex-end;
                 padding: 5px 15px;
                 transform: translate3d(40px, 8px, 0);
+                transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
               }
             }
           }
@@ -77,19 +84,20 @@
           }
 
           .project.example {
-            height: 60%;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 80%;
             content: '';
-            box-shadow: rgba(50, 50, 93, 0.25) var(--x) var(--y) 100px -20px,
-              rgba(0, 0, 0, 0.3) var(--x) var(--y) 60px -30px;
           }
 
           .project.description {
             font-family: $serif_font;
-            height: 60%;
+            height: 75%;
             position: relative;
 
             .description-sack {
-              padding: 8px 20px;
+              padding: 8px 0 8px 30px;
               height: 100%;
               margin: auto;
 
@@ -115,6 +123,14 @@
             margin-left: 50px;
             letter-spacing: 1px;
             cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
+
+            &:hover {
+              letter-spacing: 10px;
+            }
           }
 
           .filler {
@@ -123,6 +139,10 @@
             visibility: hidden;
             pointer-events: none;
             margin-right: 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
           }
 
           div {
@@ -137,6 +157,27 @@
             .left,
             .right {
               cursor: pointer;
+              position: relative;
+
+              &::after {
+                content: '';
+                width: 25px;
+                height: 25px;
+                border-radius: 100%;
+                position: absolute;
+                top: -0.5px;
+                left: -7px;
+                border: 2px solid $font;
+                opacity: 0;
+                transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+              }
+
+              &:hover {
+                &::after {
+                  transition: none;
+                  opacity: 0.7;
+                }
+              }
             }
 
             .left {

@@ -13,13 +13,19 @@
         flex: 1 1 auto;
         font-family: $logo_font;
         letter-spacing: 3px;
-        font-size: 1.2em;
+        font-size: 1.3em;
       }
 
       .content {
+        font-family: $logo_font;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        letter-spacing: 3px;
         --x: 0px;
         --y: 0px;
-        $size: 320px;
+        $size: 310px;
         width: $size;
         height: $size;
         margin: 0 auto;

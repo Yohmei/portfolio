@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
+import Loading from '../components/Loading'
 import { ProjectsContext } from '../contextapi/ProjectsProvider'
 import { s, spring_easing } from '../utils'
 import { PrevPathContext } from './../contextapi/PrevPathProvider'
@@ -28,6 +29,11 @@ const layout = (Page: React.FunctionComponent<any>, child_name: string) => {
         duration: transition_time,
         easing: (t) => spring_easing(t),
       },
+    })
+    const loader_transition = useTransition(projects.length !== 0, {
+      enter: { opacity: 1 },
+      leave: { opacity: 0 },
+      config: { duration: 1000 },
     })
 
     const turn_page = (to: string) => {
@@ -78,6 +84,15 @@ const layout = (Page: React.FunctionComponent<any>, child_name: string) => {
 
     return (
       <>
+        {loader_transition((style, condition) =>
+          condition ? (
+            ''
+          ) : (
+            <animated.div className='curtain' style={style}>
+              <Loading />
+            </animated.div>
+          )
+        )}
         {transition(({ opacity }: any, condition) => {
           return condition ? '' : <Page opacity={opacity} turn_page={turn_page} to={to} />
         })}
