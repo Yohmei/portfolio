@@ -38,6 +38,12 @@
             margin: 20px;
             font-family: $serif_font;
 
+            @include media('<desktop') {
+              width: calc(1640px / 6);
+              height: calc(940px / 6);
+              position: relative;
+            }
+
             .proj-img {
               background-size: contain;
               background-position: center center;
@@ -77,6 +83,11 @@
           height: 90%;
           width: 100%;
 
+          @include media('<desktop') {
+            flex-direction: column;
+            padding: 0 15px;
+          }
+
           .project {
             width: 50%;
             height: 70%;
@@ -89,6 +100,11 @@
             background-repeat: no-repeat;
             height: 80%;
             content: '';
+
+            @include media('<desktop') {
+              width: calc(1740px / 6);
+              height: calc(1040px / 6);
+            }
           }
 
           .project.description {
@@ -96,10 +112,19 @@
             height: 75%;
             position: relative;
 
+            @include media('<desktop') {
+              height: 60%;
+              width: 100%;
+            }
+
             .description-sack {
               padding: 8px 0 8px 30px;
               height: 100%;
               margin: auto;
+
+              @include media('<desktop') {
+                padding: 0 5px 8px 5px;
+              }
 
               p {
                 &:last-child {
@@ -128,6 +153,10 @@
             align-items: center;
             transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
 
+            @include media('<desktop') {
+              margin-left: 25px;
+            }
+
             &:hover {
               letter-spacing: 10px;
             }
@@ -143,6 +172,10 @@
             display: flex;
             align-items: center;
             transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
+
+            @include media('<desktop') {
+              margin-right: 25px;
+            }
           }
 
           div {
