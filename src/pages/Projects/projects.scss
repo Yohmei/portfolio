@@ -137,6 +137,7 @@
           .project.description {
             font-family: $serif_font;
             width: 50%;
+            height: 87%;
             position: relative;
 
             @include media('<desktop') {
