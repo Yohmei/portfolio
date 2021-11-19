@@ -130,31 +130,33 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
             }}
             className='project-box'
           >
-            <div
-              id={project && project.id}
-              className='project example'
-              style={{ backgroundImage: `url(${project?.img_url})` }}
-            ></div>
-            <div className='project description' ref={description_ref}>
-              <ParShadows>
-                <Scrollbars
-                  autoHide
-                  autoHideTimeout={500}
-                  autoHideDuration={300}
-                  autoHeight
-                  autoHeightMin={0}
-                  autoHeightMax={scroll_height}
-                  universal={true}
-                  renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
-                >
-                  <div className='description-sack'>
-                    <h2>{project?.title}</h2>
-                    {project?.description.map((desc, i) => {
-                      return <p key={i}>{desc}</p>
-                    })}
-                  </div>
-                </Scrollbars>
-              </ParShadows>
+            <h2>{project?.title}</h2>
+            <div className='proj-details'>
+              <div
+                id={project && project.id}
+                className='project example'
+                style={{ backgroundImage: `url(${project?.img_url})` }}
+              ></div>
+              <div className='project description' ref={description_ref}>
+                <ParShadows>
+                  <Scrollbars
+                    autoHide
+                    autoHideTimeout={500}
+                    autoHideDuration={300}
+                    autoHeight
+                    autoHeightMin={0}
+                    autoHeightMax={scroll_height}
+                    universal={true}
+                    renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
+                  >
+                    <div className='description-sack'>
+                      {project?.description.map((desc, i) => {
+                        return <p key={i}>{desc}</p>
+                      })}
+                    </div>
+                  </Scrollbars>
+                </ParShadows>
+              </div>
             </div>
           </animated.div>
         )

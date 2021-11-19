@@ -124,10 +124,22 @@
 
     .bottom-link.projects-link {
       padding-top: 0;
+
+      @include media('<desktop') {
+        height: 80px;
+        justify-content: flex-start;
+        padding-top: 10px;
+      }
     }
 
     .top-link.projects-link {
       padding-bottom: 0;
+
+      @include media('<desktop') {
+        height: 80px;
+        justify-content: flex-end;
+        padding-bottom: 10px;
+      }
     }
 
     main {
@@ -145,10 +157,6 @@
         display: flex;
         flex-direction: column;
         position: relative;
-
-        @include media('<ipad') {
-          width: 90%;
-        }
       }
 
       .fullscreen-bg {
