@@ -175,6 +175,10 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
                     autoHeightMax={scroll_height}
                     universal={true}
                     renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
+                    renderTrackHorizontal={(props) => (
+                      <div {...props} style={{ ...props.style, display: 'none' }} className='track-horizontal' />
+                    )}
+                    renderView={(props) => <div {...props} style={{ ...props.style, overflowX: 'hidden' }} />}
                   >
                     <div className='description-sack'>
                       {project?.description.map((desc, i) => {
@@ -193,7 +197,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
           back
         </div>
         <div className='pages'>
-          <div className='pager-wrap' style={{ cursor: 'pointer' }}>
+          <div className='pager-wrap' style={{ cursor: 'pointer', width: '26px', height: '26px' }}>
             <div
               className='left pager'
               onClick={() => turn_project_page(-1)}
@@ -205,7 +209,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
           <div className='pages'>
             {project?.page} - {projects.length}
           </div>
-          <div className='pager-wrap' style={{ cursor: 'pointer' }}>
+          <div className='pager-wrap' style={{ cursor: 'pointer', width: '26px', height: '26px' }}>
             <div
               className='right pager'
               onClick={() => turn_project_page(+1)}
