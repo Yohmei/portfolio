@@ -98,6 +98,7 @@
       padding-bottom: 50px;
 
       .up {
+        cursor: pointer;
         width: 20px;
         height: 20px;
         content: '';
@@ -112,6 +113,7 @@
       padding-top: 50px;
 
       .down {
+        cursor: pointer;
         opacity: 0.5;
         border-bottom: 1px solid $font;
         border-right: 1px solid $font;

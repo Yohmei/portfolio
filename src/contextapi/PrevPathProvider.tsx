@@ -13,7 +13,7 @@ interface IPrevPathContext {
 export const PrevPathContext = createContext({} as IPrevPathContext)
 
 const PrevPathProvider = ({ children }: any) => {
-  const [path, set_path] = useState({ prev_path: '', next_path: '' })
+  const [path, set_path] = useState({ prev_path: 'undefined', next_path: 'undefined' })
 
   return <PrevPathContext.Provider value={{ path, set_path }}>{children}</PrevPathContext.Provider>
 }

@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { animated, useTransition } from 'react-spring'
 import ParShadows from '../../../components/ParShadows'
 import { ProjectsContext } from '../../../contextapi/ProjectsProvider'
-import { s, spring_easing } from '../../../utils'
+import { s, sa, spring_easing } from '../../../utils'
 import { transition_time } from '../../layout'
 import { IProject } from './../mock-projects'
 
@@ -19,6 +19,8 @@ interface IProjectProps {
 }
 
 const Project = ({ set_coming_from_project, turning_project_page, set_turning_project_page }: IProjectProps) => {
+  const [force_descr_height_update, set_force_descr_height_update] = useState('undefined')
+  const img_ref = React.useRef<HTMLImageElement>(null)
   const { projects } = useContext(ProjectsContext)
   const [scroll_height, set_scroll_height] = useState(0)
   const description_ref = React.createRef<HTMLDivElement>()
@@ -53,6 +55,18 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
   }
 
   const turn_project_page = (n: number) => {
+    if (sa('.pager').length > 0) {
+      sa('.pager').forEach((pager) => {
+        pager.style.pointerEvents = 'none'
+      })
+
+      setTimeout(() => {
+        sa('.pager').forEach((pager) => {
+          pager.style.pointerEvents = 'auto'
+        })
+      }, 500)
+    }
+
     let proj_id = ''
     if (project) proj_id = get_proj_id(project?.page + n)
     if (proj_id !== 'not found' && proj_id !== '') {
@@ -113,6 +127,17 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
     }
   }, [])
 
+  useEffect(() => {
+    if (s('#proj-img')) {
+      if (Number(s('#proj-img').clientHeight) > 20) {
+        set_force_descr_height_update('defined')
+
+        if (force_descr_height_update === 'defined')
+          s('.project.description').style.setProperty('--height', `${s('#proj-img').clientHeight}px`)
+      }
+    }
+  }, [img_ref.current?.height, force_descr_height_update])
+
   return (
     <div className='content'>
       {transition(({ opacity }: any, condition) => {
@@ -135,14 +160,16 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
               <div
                 id={project && project.id}
                 className='project example'
-                style={{ backgroundImage: `url(${project?.img_url})` }}
-              ></div>
+                // style={{ backgroundImage: `url(${project?.img_url})` }}
+              >
+                <img id='proj-img' ref={img_ref} src={`${project?.img_url}`} alt={project?.title} />
+              </div>
               <div className='project description' ref={description_ref}>
                 <ParShadows>
                   <Scrollbars
-                    autoHide
-                    autoHideTimeout={500}
-                    autoHideDuration={300}
+                    // autoHide
+                    // autoHideTimeout={500}
+                    // autoHideDuration={300}
                     autoHeight
                     autoHeightMin={0}
                     autoHeightMax={scroll_height}
@@ -166,14 +193,30 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
           back
         </div>
         <div className='pages'>
-          <div className='left' onClick={() => turn_project_page(-1)}>
-            ⮞
+          <div className='pager-wrap' style={{ cursor: 'pointer' }}>
+            <div
+              className='left pager'
+              onClick={() => turn_project_page(-1)}
+              style={project && projects.indexOf(project) === 0 ? { visibility: 'hidden' } : { visibility: 'visible' }}
+            >
+              <div className='arrow'></div>
+            </div>
           </div>
           <div className='pages'>
             {project?.page} - {projects.length}
           </div>
-          <div className='right' onClick={() => turn_project_page(+1)}>
-            ⮞
+          <div className='pager-wrap' style={{ cursor: 'pointer' }}>
+            <div
+              className='right pager'
+              onClick={() => turn_project_page(+1)}
+              style={
+                project && projects.indexOf(project) === projects.length - 1
+                  ? { visibility: 'hidden' }
+                  : { visibility: 'visible' }
+              }
+            >
+              <div className='arrow'></div>
+            </div>
           </div>
         </div>
         <div className='filler'>back</div>

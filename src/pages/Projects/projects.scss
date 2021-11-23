@@ -1,3 +1,40 @@
+@keyframes bounceAlpha {
+  0% {
+    opacity: 1;
+    transform: translateX(0px) scale(1) rotate(45deg);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(10px) scale(0.9) rotate(45deg);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.9) rotate(45deg);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0px) scale(1) rotate(45deg);
+  }
+}
+@keyframes bounceAlphaLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0px) scale(1) rotate(45deg);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.9) rotate(45deg);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(10px) scale(0.9) rotate(45deg);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0px) scale(1) rotate(45deg);
+  }
+}
+
 #root {
   .App {
     overflow: hidden;
@@ -38,13 +75,14 @@
             margin: 20px;
             font-family: $serif_font;
 
-            @include media('<desktop') {
+            @include media('<ipad') {
               width: calc(1640px / 6);
               height: calc(940px / 6);
               position: relative;
             }
 
             .proj-img {
+              cursor: pointer;
               background-size: contain;
               background-position: center center;
               background-repeat: no-repeat;
@@ -57,13 +95,13 @@
 
               &:hover {
                 div {
-                  background-color: $font;
-                  color: $bg;
-                  opacity: 0.9;
+                  letter-spacing: 1px;
                 }
               }
 
               div {
+                white-space: nowrap;
+                cursor: pointer;
                 background-color: $bg;
                 width: max-content;
                 display: flex;
@@ -72,6 +110,7 @@
                 padding: 8px 25px;
                 transform: translate3d(40px, 8px, 0);
                 box-shadow: 0px 0px 20px -8px rgba(8, 9, 15, 0.5);
+                transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
               }
             }
           }
@@ -88,11 +127,12 @@
           h2 {
             padding-top: 20px;
             margin: 0;
+            margin-bottom: 10px;
           }
 
-          @include media('<desktop') {
+          @include media('<ipad') {
             flex-direction: column;
-            padding: 0 15px;
+            padding: 0 10px;
           }
 
           .proj-details {
@@ -102,56 +142,68 @@
             width: 100%;
             height: 100%;
 
-            @include media('<desktop') {
+            @include media('<ipad') {
               align-items: center;
               justify-content: center;
               flex-direction: column;
-              padding: 0 15px;
             }
-          }
-
-          .project {
-            width: 50%;
-            height: 70%;
-            margin-top: 20px;
           }
 
           .project.example {
             background-size: contain;
             background-position: center center;
             background-repeat: no-repeat;
-            width: calc(1740px / 3);
-            height: calc(1040px / 3);
+            // width: calc(1740px / 3);
+            // height: calc(1040px / 3);
+            --height: calc(1010px / 3);
+            width: 50%;
+            height: var(--height);
             content: '';
+            margin: auto;
+            display: flex;
+            align-items: center;
 
-            @include media('<desktop') {
+            @include media('<ipad') {
               position: relative;
               z-index: 100;
               margin-bottom: 20px;
-              width: calc(1740px / 6);
-              height: calc(1040px / 6);
-              margin-top: 40px;
+              width: 100%;
+              height: 40%;
+            }
+
+            img {
+              margin: auto;
+
+              @include media('<ipad') {
+                position: relative;
+                z-index: 100;
+                width: 100%;
+              }
             }
           }
 
           .project.description {
             font-family: $serif_font;
             width: 50%;
-            height: 87%;
+            --height: 80%;
+            height: var(--height);
             position: relative;
+            margin: auto;
+            overflow: hidden;
 
-            @include media('<desktop') {
-              height: 60%;
+            @include media('<ipad') {
+              height: 50%;
               width: 100%;
             }
 
             .description-sack {
               padding: 8px 0 8px 30px;
-              height: 100%;
+              height: auto;
               margin: auto;
+              padding-right: 10px;
 
-              @include media('<desktop') {
-                padding: 0 5px 8px 5px;
+              @include media('<ipad') {
+                padding: 5px 5px 8px 5px;
               }
 
               p {
@@ -181,7 +233,7 @@
             align-items: center;
             transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
 
-            @include media('<desktop') {
+            @include media('<ipad') {
               margin-left: 25px;
             }
 
@@ -201,7 +253,7 @@
             align-items: center;
             transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
 
-            @include media('<desktop') {
+            @include media('<ipad') {
               margin-right: 25px;
             }
           }
@@ -215,34 +267,56 @@
             justify-content: center;
             align-items: center;
 
+            .bounceAlpha {
+              animation-name: bounceAlpha;
+              animation-duration: 1.4s;
+              animation-iteration-count: infinite;
+              animation-timing-function: linear;
+            }
+
             .left,
             .right {
               cursor: pointer;
               position: relative;
+              width: 26px;
+              height: 26px;
+              opacity: 0.7;
+              display: flex;
 
-              &::after {
+              .arrow {
+                cursor: pointer;
                 content: '';
-                width: 25px;
-                height: 25px;
-                border-radius: 100%;
-                position: absolute;
-                top: -0.5px;
-                left: -7px;
-                border: 2px solid $font;
-                opacity: 0;
-                transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                border-top: 1px solid $font;
+                border-right: 1px solid $font;
+                width: 50%;
+                height: 50%;
+                margin: auto;
+                transform: rotate(45deg);
               }
 
               &:hover {
-                &::after {
-                  transition: none;
-                  opacity: 0.7;
+                .arrow {
+                  animation-name: bounceAlpha;
+                  animation-duration: 1s;
+                  animation-iteration-count: infinite;
+                  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
                 }
               }
             }
 
             .left {
-              transform: scaleX(-1);
+              .arrow {
+                border-top: unset;
+                border-right: unset;
+                border-left: 1px solid $font;
+                border-bottom: 1px solid $font;
+              }
+
+              &:hover {
+                .arrow {
+                  animation-name: bounceAlphaLeft;
+                }
+              }
             }
           }
         }

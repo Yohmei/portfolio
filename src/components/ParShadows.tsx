@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ParShadows = ({ children, width = '92%', left = '3%' }: any) => {
+const ParShadows = ({ children, width = '95%', left = '3%' }: any) => {
   const top_shadow_style = {
     content: '',
     width: width,
