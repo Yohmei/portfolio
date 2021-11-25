@@ -189,6 +189,18 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
                 </ParShadows>
               </div>
             </div>
+            <div className='proj-links'>
+              {project && project?.project_link && (
+                <a href={project?.project_link} target='_blank' rel='noreferrer'>
+                  website
+                </a>
+              )}
+              {project && project?.github_link && (
+                <a href={project?.github_link} target='_blank' rel='noreferrer'>
+                  github
+                </a>
+              )}
+            </div>
           </animated.div>
         )
       })}

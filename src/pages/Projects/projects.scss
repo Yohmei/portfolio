@@ -214,6 +214,16 @@
               }
             }
           }
+
+          .proj-links {
+            margin-bottom: 10px;
+
+            a {
+              font-family: $serif_font;
+              display: inline-block;
+              margin: 0 20px;
+            }
+          }
         }
 
         .paginator {
@@ -283,6 +293,7 @@
               height: 26px;
               opacity: 0.7;
               display: flex;
+              margin: 0;
 
               .arrow {
                 cursor: pointer;
