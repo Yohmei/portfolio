@@ -43,9 +43,10 @@ nav {
           background-color: var(--bg-color);
           transition: background-color 0.2s ease-in-out;
         }
-
-        &:hover > .bookmark {
-          background-color: $hover;
+        @media (hover: hover) {
+          &:hover > .bookmark {
+            background-color: $hover;
+          }
         }
 
         &:active > .bookmark {

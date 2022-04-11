@@ -93,9 +93,11 @@
               justify-content: flex-end;
               align-items: flex-end;
 
-              &:hover {
-                div {
-                  letter-spacing: 1px;
+              @media (hover: hover) {
+                &:hover {
+                  div {
+                    letter-spacing: 1px;
+                  }
                 }
               }
 
@@ -201,7 +203,7 @@
               height: auto;
               margin: auto;
               padding-right: 10px;
-              overflow: hidden;
+              overflow-x: hidden;
 
               @include media('<ipad') {
                 padding: 5px 5px 8px 5px;
@@ -221,6 +223,7 @@
             a {
               font-family: $serif_font;
               display: inline-block;
+              letter-spacing: 1px;
               margin: 0 20px;
             }
           }
@@ -248,8 +251,10 @@
               margin-left: 25px;
             }
 
-            &:hover {
-              letter-spacing: 10px;
+            @media (hover: hover) {
+              &:hover {
+                letter-spacing: 10px;
+              }
             }
           }
 
@@ -306,12 +311,14 @@
                 transform: rotate(45deg);
               }
 
-              &:hover {
-                .arrow {
-                  animation-name: bounceAlpha;
-                  animation-duration: 1s;
-                  animation-iteration-count: infinite;
-                  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+              @media (hover: hover) {
+                &:hover {
+                  .arrow {
+                    animation-name: bounceAlpha;
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+                  }
                 }
               }
             }
@@ -323,10 +330,11 @@
                 border-left: 1px solid $font;
                 border-bottom: 1px solid $font;
               }
-
-              &:hover {
-                .arrow {
-                  animation-name: bounceAlphaLeft;
+              @media (hover: hover) {
+                &:hover {
+                  .arrow {
+                    animation-name: bounceAlphaLeft;
+                  }
                 }
               }
             }

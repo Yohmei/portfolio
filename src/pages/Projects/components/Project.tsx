@@ -178,7 +178,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
                     renderTrackHorizontal={(props) => (
                       <div {...props} style={{ ...props.style, display: 'none' }} className='track-horizontal' />
                     )}
-                    renderView={(props) => <div {...props} style={{ ...props.style, overflowX: 'hidden' }} />}
+                    renderView={(props) => <div {...props} style={{ ...props.style }} />}
                   >
                     <div className='description-sack'>
                       {project?.description.map((desc, i) => {

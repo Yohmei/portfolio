@@ -8,7 +8,7 @@ import { IProject } from './../../pages/Projects/mock-projects'
 
 const get_img_blob = async (project: IProject) => {
   const img_download_url = await getDownloadURL(ref(storage, project.img))
-  const blob = await request('GET', img_download_url, 'blob')
+  const blob = (await request('GET', img_download_url, 'blob')) as Blob | MediaSource
   return { project_id: project.id, blob }
 }
 

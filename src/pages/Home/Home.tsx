@@ -34,8 +34,8 @@ const Home = ({ turn_page, opacity, to }: IPageProps) => {
         }),
       }}
     >
-      <div className='signature'>maxim yourich</div>
-      <div className='content'></div>
+      <div className='signature'></div>
+      <div className='content'>maxim yourich</div>
       <div onClick={() => turn_page('/projects')} className='global-links bottom-link'>
         <div className='down' id='home-down'></div>
       </div>

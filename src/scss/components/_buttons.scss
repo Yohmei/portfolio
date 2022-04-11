@@ -22,10 +22,12 @@ input[type='reset'] {
   margin: 3px 0;
 }
 
-button:hover,
-input[type='submit']:hover,
-input[type='reset']:hover {
-  background-color: $hover;
+@media (hover: hover) {
+  button:hover,
+  input[type='submit']:hover,
+  input[type='reset']:hover {
+    background-color: $hover;
+  }
 }
 
 button:active,

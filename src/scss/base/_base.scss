@@ -148,7 +148,8 @@ h3,
 h4 {
   margin-bottom: 1.8rem;
   font-family: $h_font;
-  font-weight: 600;
+  font-weight: normal;
+  letter-spacing: 2px;
 }
 
 h1 {
@@ -249,9 +250,10 @@ a {
   cursor: pointer;
   position: relative;
   transition: 0.07s ease-in-out;
-
-  &:hover {
-    color: $hover;
+  @media (hover: hover) {
+    &:hover {
+      color: $hover;
+    }
   }
 
   &:active {
