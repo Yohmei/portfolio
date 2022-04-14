@@ -14,7 +14,81 @@
         align-items: center;
         font-family: $serif_font;
         height: 100%;
+        padding-top: 80px;
+
+        .contacts {
+          width: 50%;
+          display: flex;
+          padding-top: 40px;
+          justify-content: space-around;
+
+          @include media('<ipad') {
+            width: 100%;
+          }
+        }
+
+        .cont {
+          width: 50%;
+          height: 50%;
+
+          .scrollbar-div {
+            height: 100%;
+            padding-right: 20px;
+          }
+
+          @include media('<ipad') {
+            width: 100%;
+            padding: 0 45px;
+            height: 50%;
+            overflow: hidden;
+          }
+
+          p {
+            margin-bottom: 8px;
+
+            &.gif {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+
+              @include media('<ipad') {
+                padding: 50px;
+              }
+
+              span {
+                border-radius: 90px;
+                overflow: hidden;
+                box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+                img {
+                  display: block;
+                  width: 100%;
+                }
+              }
+            }
+
+            span {
+              text-decoration: underline;
+
+              &:hover {
+                color: $hover;
+              }
+            }
+          }
+        }
       }
     }
   }
+}
+.thumb-vertical {
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(50, 50, 93, 0.4);
+  border-radius: 10px;
+  z-index: 1000;
 }

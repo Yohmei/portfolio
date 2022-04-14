@@ -283,6 +283,20 @@
             justify-content: center;
             align-items: center;
 
+            .pages {
+              @include media('<ipad') {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+                .dash {
+                  padding-top: 2px;
+                  line-height: 2px;
+                }
+              }
+            }
+
             .bounceAlpha {
               animation-name: bounceAlpha;
               animation-duration: 1.4s;

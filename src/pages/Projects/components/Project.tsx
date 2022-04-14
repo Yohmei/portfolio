@@ -219,7 +219,9 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
             </div>
           </div>
           <div className='pages'>
-            {project?.page} - {projects.length}
+            <span>{project?.page}</span>
+            <span className='dash'>{' - '}</span>
+            <span>{projects.length}</span>
           </div>
           <div className='pager-wrap' style={{ cursor: 'pointer', width: '26px', height: '26px' }}>
             <div
