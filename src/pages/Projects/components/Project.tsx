@@ -1,3 +1,4 @@
+import parse from 'html-react-parser'
 import React, { useContext, useEffect, useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { useHistory, useParams } from 'react-router-dom'
@@ -19,6 +20,7 @@ interface IProjectProps {
 }
 
 const Project = ({ set_coming_from_project, turning_project_page, set_turning_project_page }: IProjectProps) => {
+  const link_reg_ex = /link:(.*?):endlink/g
   const [force_descr_height_update, set_force_descr_height_update] = useState('undefined')
   const img_ref = React.useRef<HTMLImageElement>(null)
   const { projects } = useContext(ProjectsContext)
@@ -182,6 +184,16 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
                   >
                     <div className='description-sack'>
                       {project?.description.map((desc, i) => {
+                        const reg_link_arr = desc.match(link_reg_ex)
+                        let link = ''
+
+                        if (reg_link_arr) {
+                          const reg_link = reg_link_arr[0] as string
+                          link = reg_link.replace('link:', '').replace(':endlink', '')
+                          const html_link = `<a class='desc-link' href=${link} target='_blank' rel='noopener noreferrer'>${link}</a>`
+                          return <p key={i}>{parse(desc.replace(reg_link, html_link))}</p>
+                        }
+
                         return <p key={i}>{desc}</p>
                       })}
                     </div>
