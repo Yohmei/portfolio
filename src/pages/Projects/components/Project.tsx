@@ -135,7 +135,7 @@ const Project = ({ set_coming_from_project, turning_project_page, set_turning_pr
         set_force_descr_height_update('defined')
 
         if (force_descr_height_update === 'defined')
-          s('.project.description').style.setProperty('--height', `${s('#proj-img').clientHeight}px`)
+          s('.project.description').style.setProperty('--height', `${s('#proj-img').clientHeight + 18}px`)
       }
     }
   }, [img_ref.current?.height, force_descr_height_update])

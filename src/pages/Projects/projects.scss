@@ -48,8 +48,13 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
+        justify-content: center;
         height: 100%;
         width: 80%;
+
+        @include media('<ipad') {
+          justify-content: flex-end;
+        }
 
         .thumb-vertical {
           background-color: transparent;
@@ -67,17 +72,22 @@
 
           .project-showcase {
             cursor: pointer;
-            width: calc(1980px / 6);
-            height: calc(1180px / 6);
+            // width: calc(1980px / 6);
+            // height: calc(1180px / 6);
+            width: 22vw;
             box-shadow: rgba(50, 50, 93, 0.5) var(--x) var(--y) 50px -20px;
-            border: 10px solid $bg;
+            border: 20px solid $bg;
+            border-top-width: 0;
+            border-bottom-width: 0;
             content: '';
             margin: 20px;
             font-family: $serif_font;
+            aspect-ratio: 16 / 10;
 
-            @include media('<ipad') {
-              width: calc(1640px / 6);
-              height: calc(940px / 6);
+            @include media('<=desktop') {
+              // width: calc(1640px / 6);
+              // height: calc(940px / 6);
+              width: 30vh;
               position: relative;
             }
 
@@ -110,7 +120,7 @@
                 justify-content: flex-end;
                 align-items: flex-end;
                 padding: 8px 25px;
-                transform: translate3d(40px, 8px, 0);
+                transform: translate3d(50px, -10px, 0);
                 box-shadow: 0px 0px 20px -8px rgba(8, 9, 15, 0.5);
                 transition: letter-spacing 3s cubic-bezier(0.25, 1, 0.5, 1);
               }
@@ -123,13 +133,17 @@
           display: flex;
           align-items: center;
           padding: 0 30px;
-          height: 90%;
           width: 100%;
 
           h2 {
-            padding-top: 20px;
+            margin-bottom: 25px !important;
             margin: 0;
-            margin-bottom: 10px;
+
+            @include media('<ipad') {
+              font-size: 3.8vh;
+              margin-bottom: 0 !important;
+              text-align: center;
+            }
           }
 
           @include media('<ipad') {
@@ -140,7 +154,6 @@
           .proj-details {
             flex-direction: row;
             display: flex;
-            justify-content: flex-start;
             width: 100%;
             height: 100%;
 
@@ -157,13 +170,15 @@
             background-repeat: no-repeat;
             // width: calc(1740px / 3);
             // height: calc(1040px / 3);
-            --height: calc(1010px / 3);
+            // --height: calc(1010px / 3);
             width: 50%;
-            height: var(--height);
+            // height: var(--height);
             content: '';
             margin: auto;
             display: flex;
             align-items: center;
+            justify-content: center;
+            padding: 0 18px;
 
             @include media('<ipad') {
               position: relative;
@@ -175,11 +190,11 @@
 
             img {
               margin: auto;
+              width: 100%;
 
               @include media('<ipad') {
                 position: relative;
                 z-index: 100;
-                width: 100%;
               }
             }
           }
@@ -187,23 +202,24 @@
           .project.description {
             font-family: $serif_font;
             width: 50%;
-            --height: 80%;
+            --height: 100%;
             height: var(--height);
             position: relative;
             margin: auto;
             overflow: hidden;
 
             @include media('<ipad') {
-              height: 50%;
+              height: 40vh;
               width: 100%;
             }
 
             .description-sack {
-              padding: 8px 0 8px 30px;
+              padding: 8px 20px !important;
               height: auto;
               margin: auto;
               padding-right: 10px;
               overflow-x: hidden;
+              text-align: justify;
 
               @include media('<ipad') {
                 padding: 5px 5px 8px 5px;
@@ -218,7 +234,7 @@
           }
 
           .proj-links {
-            margin-bottom: 10px;
+            margin: 30px 0 10px;
 
             a {
               font-family: $serif_font;

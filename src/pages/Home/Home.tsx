@@ -13,7 +13,7 @@ const Home = ({ turn_page, opacity, to }: IPageProps) => {
     if (path.prev_path === 'undefined')
       timeout = setTimeout(() => {
         s('#home-down') && s('#home-down').click()
-      }, 5000)
+      }, 3000)
 
     return () => {
       clearTimeout(timeout)
