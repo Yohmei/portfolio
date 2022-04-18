@@ -54,6 +54,7 @@
 
         @include media('<ipad') {
           justify-content: flex-end;
+          width: 90%;
         }
 
         .thumb-vertical {
@@ -87,7 +88,7 @@
             @include media('<=desktop') {
               // width: calc(1640px / 6);
               // height: calc(940px / 6);
-              width: 30vh;
+              width: 66vw;
               position: relative;
             }
 
