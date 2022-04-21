@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Scrollbars from 'react-custom-scrollbars'
 import me from '../../assets/img/me.gif'
+import ParShadows from '../../components/ParShadows'
 import { PrevPathContext } from '../../contextapi/PrevPathProvider'
 import layout, { IPageProps } from '../layout'
 
@@ -39,43 +40,45 @@ const About = ({ turn_page, opacity, to }: IPageProps) => {
         <h2>Hello there!</h2>
 
         <div className='cont'>
-          <Scrollbars
-            // autoHide
-            // autoHideTimeout={500}
-            // autoHideDuration={300}
-            // autoHeight
-            // autoHeightMin={0}
-            // autoHeightMax={scroll_height}
-            universal={true}
-            renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
-            renderTrackHorizontal={(props) => (
-              <div {...props} style={{ ...props.style, display: 'none' }} className='track-horizontal' />
-            )}
-            renderView={(props) => <div {...props} style={{ ...props.style }} />}
-          >
-            <div className='scrollbar-div'>
-              <p>
-                If you have arrived to this page you must have seen some of my projects, hence you have got to know me
-                already.
-              </p>
-              <p>Still here? Alright.</p>
-              <p>
-                My family has a cosmopolitan distribution, occurring on all the world's continents except Antarctica.
-                I'm adapted for swimming, floating on the water surface, and in some cases diving in at least shallow
-                water. I am generally herbivorous, and a monogamous breeder. <span onClick={show_me}>Click</span> to see
-                me.
-              </p>
-              <p>But seriously go take a look at them. Works speak for themselves.</p>
-              <p>P.S. Except humor I'm interested in Blockchain and currently practising building apps on it.</p>
-              {is_me && (
-                <p className='gif'>
-                  <span>
-                    <img src={me} alt='me' />
-                  </span>
-                </p>
+          <ParShadows width='100%' left='0'>
+            <Scrollbars
+              // autoHide
+              // autoHideTimeout={500}
+              // autoHideDuration={300}
+              // autoHeight
+              // autoHeightMin={0}
+              // autoHeightMax={scroll_height}
+              universal={true}
+              renderThumbVertical={(props) => <div {...props} className='thumb-vertical' />}
+              renderTrackHorizontal={(props) => (
+                <div {...props} style={{ ...props.style, display: 'none' }} className='track-horizontal' />
               )}
-            </div>
-          </Scrollbars>
+              renderView={(props) => <div {...props} style={{ ...props.style }} />}
+            >
+              <div className='scrollbar-div'>
+                <p>
+                  If you have arrived to this page you must have seen some of my projects, hence you have got to know me
+                  already.
+                </p>
+                <p>Still here? Alright.</p>
+                <p>
+                  My family has a cosmopolitan distribution, occurring on all the world's continents except Antarctica.
+                  I'm adapted for swimming, floating on the water surface, and in some cases diving in at least shallow
+                  water. I am generally herbivorous, and a monogamous breeder. <span onClick={show_me}>Click</span> to
+                  see me.
+                </p>
+                <p>But seriously go take a look at them. Works speak for themselves.</p>
+                <p>P.S. Except humor I'm interested in Blockchain and currently practising building apps on it.</p>
+                {is_me && (
+                  <p className='gif'>
+                    <span>
+                      <img src={me} alt='me' />
+                    </span>
+                  </p>
+                )}
+              </div>
+            </Scrollbars>
+          </ParShadows>
         </div>
         <div className='contacts'>
           <a href='mailto:mayounnaised@gmail.com'>Email</a>

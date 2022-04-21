@@ -14,7 +14,7 @@
         align-items: center;
         font-family: $serif_font;
         height: 100%;
-        padding-top: 80px;
+        padding-top: 60px;
 
         .contacts {
           width: 50%;
@@ -28,8 +28,11 @@
         }
 
         .cont {
-          width: 50%;
+          width: 45%;
           height: 50%;
+          text-align: justify;
+          position: relative;
+          padding: 8px 0;
 
           .scrollbar-div {
             height: 100%;
@@ -38,8 +41,8 @@
 
           @include media('<ipad') {
             width: 100%;
-            padding: 0 45px;
-            height: 50%;
+            padding: 8px 45px;
+            height: 80%;
             overflow: hidden;
           }
 
