@@ -68,7 +68,6 @@ const About = ({ turn_page, opacity, to }: IPageProps) => {
                   see me.
                 </p>
                 <p>But seriously go take a look at them. Works speak for themselves.</p>
-                <p>P.S. Except humor I'm interested in Blockchain and currently practising building apps on it.</p>
                 {is_me && (
                   <p className='gif'>
                     <span>
